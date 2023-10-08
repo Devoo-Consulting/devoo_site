@@ -17,10 +17,19 @@ ul{
     padding: 0;
 }
 li{
+    color: whitesmoke;
     margin: 1rem;
-    border: 1px solid #112D4E;
     border-radius: 1rem;
     padding: 0.5rem;
-    background-color: #3F72AF;
-    box-shadow: fade-out($color: #000000, $amount: 0.5) ;
+    background-color: #3F72AF;        
+    box-shadow: 0 0 10px 0 #112D4E;
+}
+
+li a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.link{
+    background-color: #112D4E;
 }
