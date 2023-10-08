@@ -1,0 +1,46 @@
+nav{
+    background-color: #112D4E;
+    overflow: hidden;
+    border: rgb(0,0,0,0);
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+span{
+    color: white;
+    font-size: 1.5rem;
+    float: left;
+    cursor: wait;
+    transition: 0.5s;
+    display: block;
+}
+.nav-links{
+    float: right;
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.nav-links a:hover{
+    text-decoration: underline;
+    animation: rotateText 1s ease-in-out forwards;
+    transform-origin: center;
+}
+
+@keyframes rotateText {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.active-link {
+    text-decoration: underline;
+}

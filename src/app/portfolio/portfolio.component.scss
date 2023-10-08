@@ -1,0 +1,26 @@
+h1{
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem;
+}
+p{
+    font-size: 1.25rem;
+    text-align: justify;
+    margin: 2rem;
+}
+// stile the ul to dosplay items horizontally
+ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+li{
+    margin: 1rem;
+    border: 1px solid #112D4E;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: #3F72AF;
+    box-shadow: fade-out($color: #000000, $amount: 0.5) ;
+}
