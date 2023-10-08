@@ -26,21 +26,8 @@ span{
     font-size: 1.5rem;
 }
 
+//animate the text to grow when hovered over
 .nav-links a:hover{
-    text-decoration: underline;
-    animation: rotateText 1s ease-in-out forwards;
-    transform-origin: center;
+    text-decoration: underline; 
 }
 
-@keyframes rotateText {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.active-link {
-    text-decoration: underline;
-}
