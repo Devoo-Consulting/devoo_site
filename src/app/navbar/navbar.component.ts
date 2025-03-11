@@ -16,6 +16,13 @@ export class NavbarComponent implements AfterViewInit {
   private navRect: DOMRect | null = null;
   private isMouseOverNav = false;
   private illuminationThreshold = 100; // Distance threshold for illumination in pixels
+  
+  // New properties for particle animation
+  private logo: HTMLElement | null = null;
+  private particles: NodeListOf<Element> | null = null;
+  private particleCheckInterval: any = null;
+  private logoGlowing = false;
+  private logoGlowCooldown = false;
 
   constructor(private router: Router, private renderer: Renderer2) { }
 
@@ -35,7 +42,66 @@ export class NavbarComponent implements AfterViewInit {
       this.textElements.forEach(el => {
         this.renderer.addClass(el, 'text-dim');
       });
+      
+      // Initialize particle intersection detection
+      this.initParticleDetection();
     }
+  }
+  
+  // Initialize the particle detection system
+  private initParticleDetection() {
+    this.logo = document.getElementById('navbarLogo');
+    this.particles = document.querySelectorAll('.navbar-particle');
+    
+    if (this.logo && this.particles && this.particles.length > 0) {
+      // Check for particle-logo intersection every 100ms
+      this.particleCheckInterval = setInterval(() => {
+        this.checkParticleLogoIntersection();
+      }, 100);
+    }
+  }
+  
+  // Check if any particle is intersecting with the logo
+  private checkParticleLogoIntersection() {
+    if (!this.logo || !this.particles || this.logoGlowing || this.logoGlowCooldown) return;
+    
+    const logoRect = this.logo.getBoundingClientRect();
+    
+    this.particles.forEach((particle) => {
+      const particleRect = particle.getBoundingClientRect();
+      
+      // Check if particle overlaps with logo
+      if (
+        particleRect.left < logoRect.right &&
+        particleRect.right > logoRect.left &&
+        particleRect.top < logoRect.bottom &&
+        particleRect.bottom > logoRect.top
+      ) {
+        this.triggerLogoGlow();
+      }
+    });
+  }
+  
+  // Trigger the logo glow effect
+  private triggerLogoGlow() {
+    if (this.logoGlowing || this.logoGlowCooldown || !this.logo) return;
+    
+    this.logoGlowing = true;
+    this.renderer.addClass(this.logo, 'glow');
+    
+    // Remove glow after animation completes
+    setTimeout(() => {
+      if (this.logo) {
+        this.renderer.removeClass(this.logo, 'glow');
+        this.logoGlowing = false;
+        
+        // Add cooldown to prevent rapid retriggering
+        this.logoGlowCooldown = true;
+        setTimeout(() => {
+          this.logoGlowCooldown = false;
+        }, 1000); // 1 second cooldown
+      }
+    }, 1200); // Match duration of logoGlow animation
   }
 
   @HostListener('mousemove', ['$event'])
@@ -64,6 +130,13 @@ export class NavbarComponent implements AfterViewInit {
       this.renderer.removeClass(el, 'text-illuminated');
       this.renderer.addClass(el, 'text-dim');
     });
+  }
+  
+  // Clean up interval when component is destroyed
+  ngOnDestroy() {
+    if (this.particleCheckInterval) {
+      clearInterval(this.particleCheckInterval);
+    }
   }
   
   private updateTextIllumination() {

@@ -14,6 +14,170 @@
     box-shadow: var(--shadow-md);
 }
 
+/* Animated particles container */
+.navbar-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1; /* Below the logo and nav items */
+}
+
+/* Base particle styles - circular with glow effect and no trail */
+.navbar-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(0.5px);
+    z-index: 1;
+    box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.4);
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+/* Pulsing glow animation with much brighter peak */
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+    50% {
+        box-shadow: 
+            0 0 25px 6px rgba(255, 255, 255, 0.9),
+            0 0 10px 2px rgba(255, 255, 255, 1);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+}
+
+/* First particle with horizontal movement animation */
+.particle-1 {
+    top: 30%;
+    width: 5px;
+    height: 5px;
+    left: 0%;
+    animation: 
+        horizontalMove1 8s linear infinite alternate,
+        verticalBounce1 5s ease-in-out infinite alternate,
+        glowPulse 3s ease-in-out infinite alternate;
+}
+
+/* Second particle with different horizontal movement animation */
+.particle-2 {
+    top: 60%;
+    width: 3px;
+    height: 3px;
+    right: 0%;
+    animation: 
+        horizontalMove2 10s linear infinite alternate,
+        verticalBounce2 7s ease-in-out infinite alternate,
+        glowPulse 3s ease-in-out infinite alternate 1s; /* Offset timing */
+}
+
+/* Third particle with a middle horizontal path */
+.particle-3 {
+    top: 45%;
+    width: 4px;
+    height: 4px;
+    left: 50%;
+    animation: 
+        horizontalMove3 9s linear infinite alternate,
+        verticalBounce3 6s ease-in-out infinite alternate,
+        glowPulse 3s ease-in-out infinite alternate 2s; /* Different offset timing */
+}
+
+/* Horizontal movement animations */
+@keyframes horizontalMove1 {
+    0% {
+        left: 2%;
+    }
+    100% {
+        left: 98%;
+    }
+}
+
+@keyframes horizontalMove2 {
+    0% {
+        right: 2%;
+    }
+    100% {
+        right: 98%;
+    }
+}
+
+/* Horizontal animation for third particle - moves in both directions */
+@keyframes horizontalMove3 {
+    0% {
+        left: 50%;
+    }
+    25% {
+        left: 15%;
+    }
+    75% {
+        left: 85%;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+/* Vertical bounce animations */
+@keyframes verticalBounce1 {
+    0% {
+        top: 20%;
+    }
+    33% {
+        top: 65%;
+    }
+    66% {
+        top: 30%;
+    }
+    100% {
+        top: 50%;
+    }
+}
+
+@keyframes verticalBounce2 {
+    0% {
+        top: 50%;
+    }
+    33% {
+        top: 25%;
+    }
+    66% {
+        top: 70%;
+    }
+    100% {
+        top: 35%;
+    }
+}
+
+/* Vertical bounce animation for third particle */
+@keyframes verticalBounce3 {
+    0% {
+        top: 45%;
+    }
+    25% {
+        top: 75%;
+    }
+    50% {
+        top: 20%;
+    }
+    75% {
+        top: 65%;
+    }
+    100% {
+        top: 45%;
+    }
+}
+
 .logo {
     color: var(--light-text);
     font-size: 1.8rem;
@@ -27,6 +191,29 @@
     
     &:hover {
         color: var(--accent-color);
+    }
+    
+    /* Logo glow effect triggered by JavaScript */
+    &.glow {
+        animation: logoGlow 1.2s ease-in-out;
+    }
+}
+
+/* Logo glow animation */
+@keyframes logoGlow {
+    0% {
+        color: var(--light-text);
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
+    }
+    40% {
+        color: white;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(255, 255, 255, 0.6),
+                    0 0 40px var(--accent-color, rgba(59, 130, 246, 0.6));
+    }
+    100% {
+        color: var(--light-text);
+        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
     }
 }
 
