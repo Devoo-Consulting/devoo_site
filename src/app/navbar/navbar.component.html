@@ -1,18 +1,39 @@
-<nav class="navbar" #navbarEl>
-    <span class="logo" routerLink="/" id="navbarLogo">Devoo Consulting</span>
-    
-    <!-- Animated particles that will pass behind the logo -->
-    <div class="navbar-particles">
-        <div class="navbar-particle particle-1"></div>
-        <div class="navbar-particle particle-2"></div>
-        <div class="navbar-particle particle-3"></div>
+<div class="navbar" #navbarEl>
+  <div class="navbar-container">
+    <!-- Logo on the left -->
+    <div class="logo-container">
+      <h1 id="navbarLogo" class="logo" routerLink="/" #navLink>
+        Devoo Consulting
+      </h1>
     </div>
     
-    <!-- <img src="" alt="Devoo Consulting"> -->
-    <div class="nav-links">
-        <a routerLink="/services" routerLinkActive="active-link" class="nav-item" #navLink>Services</a>
-        <a routerLink="/portfolio" routerLinkActive="active-link" class="nav-item" #navLink>Portfolio</a>
-        <a routerLink="/contact" routerLinkActive="active-link" class="nav-item" #navLink>Contact</a>
+    <!-- Ultra-simple hamburger button - only show on mobile -->
+    <button class="menu-toggle" (click)="mobileMenuOpen = !mobileMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <!-- Desktop navigation links - use *ngIf instead of [hidden] -->
+    <div class="desktop-nav" *ngIf="!isMobileView">
+      <a class="nav-item" routerLink="/services" routerLinkActive="active-link" #navLink>Services</a>
+      <a class="nav-item" routerLink="/portfolio" routerLinkActive="active-link" #navLink>Portfolio</a>
+      <a class="nav-item" routerLink="/contact" routerLinkActive="active-link" #navLink>Contact</a>
     </div>
-</nav>
+    
+    <!-- Mobile overlay menu - with auto-close on click -->
+    <div class="mobile-menu" *ngIf="mobileMenuOpen && isMobileView">
+      <a class="mobile-nav-item" routerLink="/services" routerLinkActive="active-link" (click)="mobileMenuOpen = false">Services</a>
+      <a class="mobile-nav-item" routerLink="/portfolio" routerLinkActive="active-link" (click)="mobileMenuOpen = false">Portfolio</a>
+      <a class="mobile-nav-item" routerLink="/contact" routerLinkActive="active-link" (click)="mobileMenuOpen = false">Contact</a>
+    </div>
+    
+    <!-- Particle container for animated particles -->
+    <div class="navbar-particles-container" *ngIf="!isMobileView">
+      <div class="navbar-particle particle-1"></div>
+      <div class="navbar-particle particle-2"></div>
+      <div class="navbar-particle particle-3"></div>
+    </div>
+  </div>
+</div>
 

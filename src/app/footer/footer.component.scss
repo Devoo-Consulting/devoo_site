@@ -5,12 +5,30 @@ footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     margin-top: 3rem;
     border-top: 1px solid var(--border-color);
+    
+    @media (max-width: 768px) {
+        padding: 1.2rem 0;
+        margin-top: 2rem;
+    }
+    
+    @media (max-width: 480px) {
+        padding: 1rem 0;
+        margin-top: 1.5rem;
+    }
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    
+    @media (max-width: 768px) {
+        padding: 0 1.5rem;
+    }
+    
+    @media (max-width: 480px) {
+        padding: 0 1rem;
+    }
 }
 
 p {
@@ -24,6 +42,11 @@ p {
     font-weight: 600;
     margin-bottom: 1rem;
     opacity: 0.9;
+    
+    @media (max-width: 480px) {
+        font-size: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
 }
 
 .quote {
@@ -33,4 +56,9 @@ p {
     margin: 0 auto;
     opacity: 0.8;
     padding: 0 1rem;
+    
+    @media (max-width: 480px) {
+        font-size: 0.75rem;
+        padding: 0 0.5rem;
+    }
 }

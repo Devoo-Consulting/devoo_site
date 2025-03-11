@@ -46,11 +46,34 @@
     --transition-fast: 0.2s;
     --transition-medium: 0.4s;
     --transition-slow: 0.6s;
+    
+    /* Breakpoints */
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+/* Responsive font sizes */
+html {
+    font-size: 16px;
+    
+    @media (max-width: 992px) {
+        font-size: 15px;
+    }
+    
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 body{
     background-color: var(--background-color);
     color: var(--text-color);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .content {
@@ -61,6 +84,17 @@ body{
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-md);
     padding: var(--space-md);
+    
+    @media (max-width: 768px) {
+        margin-top: 6rem;
+        margin-bottom: 2rem;
+        padding: var(--space-sm);
+    }
+    
+    @media (max-width: 480px) {
+        margin-top: 5rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 @keyframes slideIn {
@@ -77,6 +111,43 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: var(--space-sm);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+    
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+    
+    @media (max-width: 480px) {
+        font-size: 1.8rem;
+    }
+}
+
+h2 {
+    font-size: 2rem;
+    
+    @media (max-width: 768px) {
+        font-size: 1.8rem;
+    }
+    
+    @media (max-width: 480px) {
+        font-size: 1.5rem;
+    }
+}
+
+h3 {
+    font-size: 1.5rem;
+    
+    @media (max-width: 768px) {
+        font-size: 1.3rem;
+    }
+    
+    @media (max-width: 480px) {
+        font-size: 1.2rem;
+    }
 }
 
 p {
@@ -92,6 +163,10 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--space-md);
+    
+    @media (max-width: 768px) {
+        padding: 0 var(--space-sm);
+    }
 }
 
 /* Button styles */
@@ -105,6 +180,16 @@ p {
     cursor: pointer;
     transition: all var(--transition-fast) ease;
     border: none;
+    
+    @media (max-width: 768px) {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    @media (max-width: 480px) {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
 }
 
 .btn-primary {
@@ -144,3 +229,77 @@ app-root {
 app-footer {
   margin-top: 0;
 }
+
+/* Responsive grid layouts */
+.grid {
+    display: grid;
+    gap: var(--space-md);
+    
+    @media (max-width: 768px) {
+        gap: var(--space-sm);
+    }
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Utility classes for responsive adjustments */
+.hide-on-mobile {
+    @media (max-width: 768px) {
+        display: none !important;
+    }
+}
+
+.show-on-mobile {
+    display: none !important;
+    
+    @media (max-width: 768px) {
+        display: block !important;
+    }
+}
+
+.text-center-mobile {
+    @media (max-width: 768px) {
+        text-align: center !important;
+    }
+}
+
+/* Spacing utilities */
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.my-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+.mx-0 { margin-left: 0 !important; margin-right: 0 !important; }
+
+.pt-0 { padding-top: 0 !important; }
+.pb-0 { padding-bottom: 0 !important; }
+.py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+.px-0 { padding-left: 0 !important; padding-right: 0 !important; }

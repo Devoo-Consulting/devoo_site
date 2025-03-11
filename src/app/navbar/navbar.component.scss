@@ -1,21 +1,149 @@
-.navbar {
-    padding: 0 2rem;
-    background-color: var(--primary-color);
-    position: fixed;
+:host {
+    display: block;
     width: 100%;
+}
+
+.navbar {
+    position: fixed;
     top: 0;
-    left: 0;  
-    height: 5rem;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 0 2rem;
+    
+    @media (max-width: 768px) {
+        padding: 0 1rem;
+    }
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 
-/* Animated particles container */
-.navbar-particles {
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+#navbarLogo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+    
+    @media (max-width: 768px) {
+        font-size: 1.4rem;
+    }
+    
+    @media (max-width: 480px) {
+        font-size: 1.2rem;
+    }
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 2rem;
+    
+    .nav-item {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        &:hover {
+            color: white;
+            
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    cursor: pointer;
+    outline: none;
+    
+    @media (max-width: 768px) {
+        display: block;
+    }
+    
+    span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0;
+        border-radius: 3px;
+        transition: transform 0.3s, opacity 0.3s;
+    }
+}
+
+.mobile-menu {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    background-color: rgba(10, 10, 20, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 0 0 0 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    
+    .mobile-nav-item {
+        color: white;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 12px 20px;
+        text-align: center;
+        width: 90%;
+        margin: 5px 0;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.1);
+        
+        &:active, &:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+.navbar-particles-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,27 +151,88 @@
     height: 100%;
     overflow: hidden;
     pointer-events: none;
-    z-index: 1; /* Below the logo and nav items */
 }
 
-/* Base particle styles - circular with glow effect and no trail */
 .navbar-particle {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    filter: blur(0.5px);
-    z-index: 1;
-    box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.4);
-    animation: glowPulse 3s ease-in-out infinite alternate;
+    z-index: 5;
+    animation: glowPulse 4s infinite alternate;
 }
 
-/* Pulsing glow animation with much brighter peak */
+.particle-1 {
+    top: 30%;
+    width: 5px;
+    height: 5px;
+    left: 10%;
+    animation: 
+        horizontalMove1 7s infinite alternate, 
+        verticalBounce1 5s infinite alternate, 
+        glowPulse 4s infinite alternate;
+}
+
+.particle-2 {
+    top: 60%;
+    width: 3px;
+    height: 3px;
+    left: 20%;
+    animation: 
+        horizontalMove2 8s infinite alternate, 
+        verticalBounce2 4s infinite alternate, 
+        glowPulse 4s 1s infinite alternate;
+}
+
+.particle-3 {
+    top: 45%;
+    width: 4px;
+    height: 4px;
+    left: 50%;
+    animation: 
+        horizontalMove3 9s infinite alternate, 
+        verticalBounce3 6s infinite alternate, 
+        glowPulse 4s 2s infinite alternate;
+}
+
+@keyframes horizontalMove1 {
+    0% { left: 10%; }
+    100% { left: 90%; }
+}
+
+@keyframes horizontalMove2 {
+    0% { left: 20%; }
+    100% { left: 80%; }
+}
+
+@keyframes horizontalMove3 {
+    0% { left: 50%; }
+    33% { left: 15%; }
+    66% { left: 85%; }
+    100% { left: 50%; }
+}
+
+@keyframes verticalBounce1 {
+    0%, 100% { top: 30%; }
+    50% { top: 60%; }
+}
+
+@keyframes verticalBounce2 {
+    0%, 100% { top: 60%; }
+    50% { top: 40%; }
+}
+
+@keyframes verticalBounce3 {
+    0% { top: 45%; }
+    25% { top: 20%; }
+    50% { top: 75%; }
+    75% { top: 35%; }
+    100% { top: 45%; }
+}
+
 @keyframes glowPulse {
-    0% {
-        box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.3);
-        background-color: rgba(255, 255, 255, 0.25);
+    0%, 100% {
+        box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.3);
     }
     50% {
         box-shadow: 
@@ -51,265 +240,13 @@
             0 0 10px 2px rgba(255, 255, 255, 1);
         background-color: rgba(255, 255, 255, 0.9);
     }
-    100% {
-        box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.3);
-        background-color: rgba(255, 255, 255, 0.25);
+}
+
+// Ensure desktop nav is properly hidden on mobile
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none !important;
     }
 }
 
-/* First particle with horizontal movement animation */
-.particle-1 {
-    top: 30%;
-    width: 5px;
-    height: 5px;
-    left: 0%;
-    animation: 
-        horizontalMove1 8s linear infinite alternate,
-        verticalBounce1 5s ease-in-out infinite alternate,
-        glowPulse 3s ease-in-out infinite alternate;
-}
-
-/* Second particle with different horizontal movement animation */
-.particle-2 {
-    top: 60%;
-    width: 3px;
-    height: 3px;
-    right: 0%;
-    animation: 
-        horizontalMove2 10s linear infinite alternate,
-        verticalBounce2 7s ease-in-out infinite alternate,
-        glowPulse 3s ease-in-out infinite alternate 1s; /* Offset timing */
-}
-
-/* Third particle with a middle horizontal path */
-.particle-3 {
-    top: 45%;
-    width: 4px;
-    height: 4px;
-    left: 50%;
-    animation: 
-        horizontalMove3 9s linear infinite alternate,
-        verticalBounce3 6s ease-in-out infinite alternate,
-        glowPulse 3s ease-in-out infinite alternate 2s; /* Different offset timing */
-}
-
-/* Horizontal movement animations */
-@keyframes horizontalMove1 {
-    0% {
-        left: 2%;
-    }
-    100% {
-        left: 98%;
-    }
-}
-
-@keyframes horizontalMove2 {
-    0% {
-        right: 2%;
-    }
-    100% {
-        right: 98%;
-    }
-}
-
-/* Horizontal animation for third particle - moves in both directions */
-@keyframes horizontalMove3 {
-    0% {
-        left: 50%;
-    }
-    25% {
-        left: 15%;
-    }
-    75% {
-        left: 85%;
-    }
-    100% {
-        left: 50%;
-    }
-}
-
-/* Vertical bounce animations */
-@keyframes verticalBounce1 {
-    0% {
-        top: 20%;
-    }
-    33% {
-        top: 65%;
-    }
-    66% {
-        top: 30%;
-    }
-    100% {
-        top: 50%;
-    }
-}
-
-@keyframes verticalBounce2 {
-    0% {
-        top: 50%;
-    }
-    33% {
-        top: 25%;
-    }
-    66% {
-        top: 70%;
-    }
-    100% {
-        top: 35%;
-    }
-}
-
-/* Vertical bounce animation for third particle */
-@keyframes verticalBounce3 {
-    0% {
-        top: 45%;
-    }
-    25% {
-        top: 75%;
-    }
-    50% {
-        top: 20%;
-    }
-    75% {
-        top: 65%;
-    }
-    100% {
-        top: 45%;
-    }
-}
-
-.logo {
-    color: var(--light-text);
-    font-size: 1.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s ease;
-    position: relative;
-    z-index: 2;
-    mix-blend-mode: normal;
-    text-shadow: 0 0 0px rgba(255, 255, 255, 0);
-    
-    &:hover {
-        color: var(--accent-color);
-    }
-    
-    /* Logo glow effect triggered by JavaScript */
-    &.glow {
-        animation: logoGlow 1.2s ease-in-out;
-    }
-}
-
-/* Logo glow animation */
-@keyframes logoGlow {
-    0% {
-        color: var(--light-text);
-        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
-    }
-    40% {
-        color: white;
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
-                    0 0 30px rgba(255, 255, 255, 0.6),
-                    0 0 40px var(--accent-color, rgba(59, 130, 246, 0.6));
-    }
-    100% {
-        color: var(--light-text);
-        text-shadow: 0 0 0px rgba(255, 255, 255, 0);
-    }
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    position: relative;
-    z-index: 2;
-}
-
-.nav-item {
-    color: var(--light-text);
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 400;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    position: relative;
-    text-shadow: 0 0 0px rgba(255, 255, 255, 0);
-    background-color: rgba(255, 255, 255, 0);
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
-    transition: all 1.5s ease;
-    
-    /* Animated underline effect */
-    &::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 50%;
-        background-color: var(--accent-color);
-        transform: translateX(-50%);
-        transition: all 1s ease;
-        opacity: 0;
-    }
-    
-    &:hover {
-        color: var(--accent-color);
-        
-        &::after {
-            width: 100%;
-            opacity: 1;
-            transition: width 0.6s ease, opacity 0.4s ease;
-        }
-    }
-    
-    /* Collapse effect when not hovering */
-    &:not(:hover)::after {
-        width: 0;
-        opacity: 0;
-        transition: width 0.5s ease, opacity 0.3s ease 0.2s;
-    }
-}
-
-.active-link {
-    font-weight: 700;
-    color: var(--light-text) !important;
-    background-color: rgba(59, 130, 246, 0.2); /* Using accent color with transparency */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 1.5s ease;
-    
-    /* Keep underline for active link */
-    &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        bottom: 0;
-        left: 50%;
-        background-color: var(--accent-color);
-        transform: translateX(-50%);
-        opacity: 1;
-        box-shadow: 0 0 8px rgba(59, 130, 246, 0.5); /* Using accent color for glow */
-        transition: all 1.5s ease;
-    }
-    
-    /* Override the text-illumination effect */
-    &.text-dim {
-        color: var(--light-text) !important;
-        transition: color 1.5s ease;
-    }
-}
-
-/* Text illumination effect - will be applied via JavaScript */
-.text-illuminated {
-    color: var(--light-text) !important;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
-                 0 0 20px rgba(255, 255, 255, 0.5), 
-                 0 0 30px rgba(255, 255, 255, 0.3) !important;
-    transition: text-shadow 0.3s ease-out, color 0.3s ease-out;
-}
-
-.text-dim {
-    color: rgba(255, 255, 255, 0.8); /* Increased from 0.7 for better readability */
-    text-shadow: none;
-    transition: text-shadow 0.8s ease-out, color 0.8s ease-out;
-}
 
