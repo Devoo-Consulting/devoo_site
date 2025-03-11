@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener, OnDestroy, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,13 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   isMobileView = false;
   menuClosing = false;
   
+  // References to DOM elements for particle-logo interaction
+  @ViewChild('navbarLogo') logoElement!: ElementRef;
+  @ViewChild('navbarEl') navbarElement!: ElementRef;
+  
+  // Animation frame handle for cleanup
+  private animationFrameId = 0;
+  
   constructor(public router: Router) { }
 
   ngOnInit() {
@@ -22,6 +29,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     // Double check mobile view after view initialization
     this.checkMobileView();
+    
+    // Start the particle-logo interaction animation
+    this.startParticleLogoInteraction();
   }
   
   // Toggle mobile menu with animation support
@@ -76,7 +86,63 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   
+  // Particle and logo interaction animation
+  startParticleLogoInteraction() {
+    if (!this.logoElement) return;
+    
+    const particles = this.navbarElement.nativeElement.querySelectorAll('.navbar-particle');
+    const logo = this.logoElement.nativeElement;
+    
+    const checkCollision = () => {
+      if (!logo) return;
+      
+      const logoRect = logo.getBoundingClientRect();
+      
+      particles.forEach((particle: HTMLElement) => {
+        const particleRect = particle.getBoundingClientRect();
+        
+        // Check for intersection between particle and logo
+        const isColliding = !(
+          particleRect.right < logoRect.left || 
+          particleRect.left > logoRect.right || 
+          particleRect.bottom < logoRect.top || 
+          particleRect.top > logoRect.bottom
+        );
+        
+        // Apply glow class when colliding
+        if (isColliding) {
+          logo.classList.add('logo-glow');
+        } else {
+          // Check if no particles are colliding before removing the glow
+          const nodeArray = Array.from(particles);
+          const anyParticleColliding = nodeArray.some(p => {
+            const pRect = (p as Element).getBoundingClientRect();
+            return !(
+              pRect.right < logoRect.left || 
+              pRect.left > logoRect.right || 
+              pRect.bottom < logoRect.top || 
+              pRect.top > logoRect.bottom
+            );
+          });
+          
+          if (!anyParticleColliding) {
+            logo.classList.remove('logo-glow');
+          }
+        }
+      });
+      
+      // Continue animation loop
+      this.animationFrameId = requestAnimationFrame(checkCollision);
+    };
+    
+    // Start the animation loop
+    this.animationFrameId = requestAnimationFrame(checkCollision);
+  }
+  
   ngOnDestroy() {
-    // Cleanup if needed
+    // Clean up animation frame
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+    }
   }
 }

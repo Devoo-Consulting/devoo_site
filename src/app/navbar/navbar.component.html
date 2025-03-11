@@ -2,7 +2,7 @@
   <div class="navbar-container">
     <!-- Logo on the left -->
     <div class="logo-container">
-      <h1 id="navbarLogo" class="logo" routerLink="/" #navLink>
+      <h1 id="navbarLogo" class="logo" routerLink="/" #navbarLogo>
         Devoo Consulting
       </h1>
     </div>
@@ -37,8 +37,8 @@
          [class.active]="router.url === '/contact'">Contact</a>
     </div>
     
-    <!-- Particle container for animated particles -->
-    <div class="navbar-particles-container" *ngIf="!isMobileView">
+    <!-- Particle container for animated particles - show on all devices -->
+    <div class="navbar-particles-container">
       <div class="navbar-particle particle-1"></div>
       <div class="navbar-particle particle-2"></div>
       <div class="navbar-particle particle-3"></div>

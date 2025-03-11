@@ -9,7 +9,7 @@
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: rgba(10, 10, 20, 0.8);
+    background-color: rgba(5, 5, 15, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -27,11 +27,14 @@
     height: 100%;
     width: 100%;
     position: relative;
+    box-sizing: border-box;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    height: 100%;
+    justify-content: center;
 }
 
 #navbarLogo {
@@ -41,6 +44,12 @@
     color: white;
     letter-spacing: 2px;
     cursor: pointer;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
     
     @media (max-width: 768px) {
         font-size: 1.4rem;
@@ -48,6 +57,15 @@
     
     @media (max-width: 480px) {
         font-size: 1.2rem;
+    }
+    
+    &.logo-glow {
+        color: #fff;
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.5),
+            0 0 30px rgba(255, 255, 255, 0.3);
+        transition: text-shadow 0.2s ease, color 0.2s ease;
     }
 }
 
@@ -131,7 +149,7 @@
     top: 70px;
     right: 0;
     width: 200px;
-    background-color: rgba(10, 10, 20, 0.95);
+    background-color: rgba(5, 5, 15, 0.95);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,6 +206,7 @@
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    z-index: 10;
 }
 
 .navbar-particle {
@@ -196,6 +215,11 @@
     border-radius: 50%;
     z-index: 5;
     animation: glowPulse 4s infinite alternate;
+    
+    @media (max-width: 768px) {
+        transform: scale(1.5);
+        background-color: rgba(255, 255, 255, 0.4);
+    }
 }
 
 .particle-1 {
@@ -276,6 +300,22 @@
             0 0 25px 6px rgba(255, 255, 255, 0.9),
             0 0 10px 2px rgba(255, 255, 255, 1);
         background-color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Enhanced glow for mobile */
+@media (max-width: 768px) {
+    @keyframes glowPulse {
+        0%, 100% {
+            box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        50% {
+            box-shadow: 
+                0 0 30px 8px rgba(255, 255, 255, 1),
+                0 0 15px 3px rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 1);
+        }
     }
 }
 
