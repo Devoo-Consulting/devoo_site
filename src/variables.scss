@@ -1,0 +1,46 @@
+// Color Variables
+$primary-color-dark: #1E3A8A;  // Deep navy blue
+$primary-color: #3B82F6;       // Bright blue
+$primary-color-light: #EFF6FF; // Light blue background
+$accent-color: #ffffff;        // White for contrast
+$text-primary: #1E3A8A;        // Text in dark blue
+$text-secondary: #4B5563;      // Secondary text in gray
+$bg-light: #F3F4F6;            // Light gray background
+$bg-lighter: #F9FAFB;          // Even lighter background
+$bg-white: #ffffff;            // White background
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// Border Radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-full: 9999px;
+
+// Box Shadows
+$shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 6px 15px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+// Transitions
+$transition-fast: 0.2s;
+$transition-normal: 0.3s;
+$transition-slow: 0.5s;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Container Max Widths
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-xxl: 1320px; 

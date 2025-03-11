@@ -1,22 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;1,100&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    /* Primary Colors */
+    --primary-color: #2D3748;     /* Dark gray (was navy blue) */
+    --primary-light: #4A5568;     /* Medium gray for hover states */
+    --secondary-color: #718096;   /* Lighter gray for secondary elements */
+    --accent-color: #4A5568;      /* Medium gray accent (was bright blue) */
+    --accent-hover: #2D3748;      /* Darker gray for accent hover */
+    
+    /* Background & Surface Colors */
+    --background-color: #F8FAFC;  /* Very light gray for background */
+    --surface-color: #FFFFFF;     /* White for cards and content */
+    --border-color: #E2E8F0;      /* Light gray for borders */
+    
+    /* Text Colors */
+    --text-color: #1A202C;        /* Very dark gray for primary text */
+    --text-color-light: #4A5568;  /* Medium gray for secondary text */
+    --text-secondary: #718096;    /* Lighter gray for tertiary text */
+    --light-text: #F7FAFC;        /* Very light gray text for dark backgrounds */
+    
+    /* Spacing System */
+    --space-xs: 0.5rem;   /* 8px */
+    --space-sm: 1rem;     /* 16px */
+    --space-md: 1.5rem;   /* 24px */
+    --space-lg: 2rem;     /* 32px */
+    --space-xl: 3rem;     /* 48px */
+    --space-xxl: 5rem;    /* 80px */
+    
+    /* Borders and Shadows */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+    
+    /* Animation Timing */
+    --transition-fast: 0.2s;
+    --transition-medium: 0.4s;
+    --transition-slow: 0.6s;
 }
 
 body{
-    background-color: #DBE2EF;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .content {
     margin-top: 8rem;
     margin-bottom: 3rem;
     animation: slideIn 0.5s ease-in-out;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-md);
 }
 
 @keyframes slideIn {
@@ -26,4 +70,77 @@ body{
     100% {
         transform: translateX(0);
     }
+}
+
+/* Basic text styles */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: var(--space-sm);
+}
+
+p {
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    margin-bottom: var(--space-sm);
+}
+
+/* Layout containers */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-light);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Fix spacing issues */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+/* Ensure no gaps between major components */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Footer spacing fix */
+app-footer {
+  margin-top: 0;
 }

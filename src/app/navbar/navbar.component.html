@@ -1,12 +1,11 @@
-<nav>
-    <span>Devoo Consulting</span>
+<nav class="navbar" #navbarEl>
+    <span class="logo" routerLink="/">Devoo Consulting</span>
     
     <!-- <img src="" alt="Devoo Consulting"> -->
     <div class="nav-links">
-        <a routerLink="/info" routerLinkActive="active-link">Info</a>
-        <a routerLink="/services" routerLinkActive="active-link">Services</a>
-        <a routerLink="/portfolio" routerLinkActive="active-link">Portfolio</a>
-        <a routerLink="/contact" routerLinkActive="active-link">Contact</a>
+        <a routerLink="/services" routerLinkActive="active-link" class="nav-item" #navLink>Services</a>
+        <a routerLink="/portfolio" routerLinkActive="active-link" class="nav-item" #navLink>Portfolio</a>
+        <a routerLink="/contact" routerLinkActive="active-link" class="nav-item" #navLink>Contact</a>
     </div>
 </nav>
 
