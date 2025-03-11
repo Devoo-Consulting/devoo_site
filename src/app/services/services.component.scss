@@ -151,7 +151,6 @@ section::before {
   width: 120px;
   height: 3px;
   transform-origin: left top;
-  transform: rotate(45deg);
   background: linear-gradient(to left, 
     rgba(255, 255, 255, 1) 0%, 
     rgba(255, 255, 255, 0.8) 10%, 
@@ -225,7 +224,7 @@ section::before {
 
 @keyframes meteor {
   0% {
-    transform: rotate(45deg) translateX(0) translateY(0);
+    transform: translateX(0) translateY(0) rotate(45deg);
     opacity: 0;
   }
   3% {
@@ -244,11 +243,11 @@ section::before {
   }
   15% {
     opacity: 0;
-    transform: rotate(45deg) translateX(1000px) translateY(1000px);
+    transform: translateX(1000px) translateY(1000px) rotate(45deg);
   }
   100% {
     opacity: 0;
-    transform: rotate(45deg) translateX(1000px) translateY(1000px);
+    transform: translateX(1000px) translateY(1000px) rotate(45deg);
   }
 }
 
@@ -694,7 +693,6 @@ section::before {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   opacity: 0;
   z-index: 1;
-  transform: rotate(45deg);
   transform-origin: left top;
   animation: meteor 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
