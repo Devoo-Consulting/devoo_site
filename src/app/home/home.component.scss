@@ -39,18 +39,14 @@ section::before {
 
 /* Hero Section with enhanced visual effects */
 .hero {
-  background: linear-gradient(135deg, #131c2a 0%, #1e293b 100%);
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(10, 10, 30, 0.8));
   color: #E2E8F0;
-  padding: 0;
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   position: relative;
-  min-height: 100vh;
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: relative;
+  overflow: hidden;
 }
 
 /* Enhanced animated gradient overlay for hero */
@@ -399,12 +395,11 @@ section::before {
 
 /* Mission Section with enhanced effects */
 .mission {
-  background: linear-gradient(135deg, #1d2536 0%, #2b3249 100%);
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
   color: #FFFFFF;
-  padding: 2rem 0;
-  opacity: 1 !important;
-  visibility: visible !important;
+  padding: 6rem 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* Add night sky effect to mission section */
@@ -559,12 +554,11 @@ section::before {
 
 /* Approach Section with enhanced effects */
 .approach {
-  background: linear-gradient(135deg, #192236 0%, #253047 100%);
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
   color: #FFFFFF;
-  padding: 2rem 0;
-  opacity: 1 !important;
-  visibility: visible !important;
+  padding: 6rem 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* Add star effect to approach section */
@@ -782,12 +776,11 @@ section::before {
 
 /* Client Focus Section with enhanced effects */
 .clients {
-  background: linear-gradient(135deg, #1e293b 0%, #283850 100%);
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
   color: #FFFFFF;
-  padding: 2rem 0;
-  opacity: 1 !important;
-  visibility: visible !important;
+  padding: 6rem 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* Enhanced star effect for clients section */
@@ -1009,13 +1002,10 @@ section::before {
 
 /* CTA Section with enhanced effects */
 .cta {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(5, 5, 15, 0.98));
   color: white;
   text-align: center;
-  padding: 5rem 0;
-  opacity: 1 !important;
-  visibility: visible !important;
-  margin-bottom: -4rem;
+  padding: 6rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -1410,4 +1400,70 @@ section::before {
 :host ::ng-deep app-footer {
   margin-top: 0;
   display: block;
+}
+
+.about {
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
+  color: #FFFFFF;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box {
+  background-color: #5464e2;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #4756c4;
+    transform: translateY(-2px);
+  }
+}
+
+.features {
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(10, 10, 30, 0.8));
+  color: #FFFFFF;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.technologies {
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
+  color: white;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section {
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(5, 5, 15, 0.98));
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button {
+  background-color: #5464e2;
+  color: #FFFFFF;
+  padding: 0.8rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  
+  &:hover {
+    background-color: #4756c4;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  }
 }

@@ -32,8 +32,8 @@ h1, h2, h3, p, a, span, div {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #050510, #0a0a1e);
-  padding: 0;
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(10, 10, 30, 0.8));
+  padding: 3rem 0;
   z-index: 10;
   
   @include responsive(tablet) {
@@ -353,17 +353,13 @@ h1, h2, h3, p, a, span, div {
 }
 
 .contact-link {
-  color: rgba(255, 255, 255, 0.9) !important;
-  text-decoration: none !important;
-  font-size: 1.1rem !important;
-  transition: color 0.3s ease !important;
-  
-  @include responsive(mobile) {
-    font-size: 1rem !important;
-  }
+  color: #5464e2 !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
   
   &:hover {
-    color: #5464e2 !important;
+    color: #4756c4 !important;
+    text-decoration: underline;
   }
 }
 
@@ -506,7 +502,7 @@ h1, h2, h3, p, a, span, div {
 // CTA Section
 .cta {
   padding: 5rem 0 0;
-  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(5, 5, 15, 0.98));
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
   position: relative;
   text-align: center;
   z-index: 5;
@@ -602,25 +598,28 @@ h1, h2, h3, p, a, span, div {
   }
   
   .cta-button {
-    background: #5464e2 !important;
+    display: inline-block;
+    background: linear-gradient(45deg, #4a6bff, #5c3dff);
     color: #fff !important;
-    padding: 1rem 2.5rem !important;
-    font-size: 1.2rem !important;
-    border-radius: 8px !important;
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    transition: background 0.3s ease, transform 0.3s ease !important;
-    position: relative !important;
-    z-index: 10 !important;
-    
-    @include responsive(mobile) {
-      padding: 0.8rem 2rem !important;
-      font-size: 1rem !important;
-    }
+    padding: 0.8rem 2.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(80, 120, 255, 0.4);
     
     &:hover {
-      background: #4353d1 !important;
-      transform: translateY(-2px) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(80, 120, 255, 0.5);
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(80, 120, 255, 0.4);
     }
   }
   
@@ -826,4 +825,25 @@ h1, h2, h3, p, a, span, div {
 // Fix to ensure footer connects properly
 ::ng-deep app-footer {
   margin-top: 0 !important;
+}
+
+.approach-section {
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefits {
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(5, 5, 15, 0.98));
+  padding: 5rem 0;
+  position: relative;
+  color: #fff !important;
+}
+
+.cta-section {
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
+  text-align: center;
+  padding: 5rem 0;
+  position: relative;
 }

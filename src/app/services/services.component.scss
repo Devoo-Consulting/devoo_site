@@ -38,7 +38,7 @@ section::before {
 
 /* Services Hero Section */
 .services-hero {
-  background: linear-gradient(135deg, #131c2a 0%, #1e293b 100%);
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(10, 10, 30, 0.8));
   color: #E2E8F0;
   padding: 0;
   display: flex;
@@ -417,7 +417,7 @@ section::before {
   
   i {
     font-size: 2.2rem;
-    color: #3182ce;
+    color: #5464e2;
     transition: all 0.4s ease;
   }
 }
@@ -437,7 +437,7 @@ section::before {
 
 /* Services Process Section */
 .services-process {
-  background: linear-gradient(135deg, #1f2b3e 0%, #293b4f 100%);
+  background: linear-gradient(to bottom, rgba(10, 10, 30, 0.8), rgba(5, 5, 15, 0.95));
   color: white;
   position: relative;
 }
@@ -498,7 +498,7 @@ section::before {
 .process-number {
   width: 4.5rem;
   height: 4.5rem;
-  background-color: #4a5568;
+  background-color: #5464e2;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -506,7 +506,7 @@ section::before {
   font-size: 1.8rem;
   font-weight: 700;
   flex-shrink: 0;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(84, 100, 226, 0.4);
   z-index: 2;
   position: relative;
   
@@ -518,7 +518,7 @@ section::before {
     right: -5px;
     bottom: -5px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(84, 100, 226, 0.2);
     animation: pulseBorder 2.5s infinite;
   }
   
@@ -570,7 +570,7 @@ section::before {
 
 /* CTA Section */
 .cta {
-  background: linear-gradient(135deg, #131c2a 0%, #1e293b 100%);
+  background: linear-gradient(to bottom, rgba(5, 5, 15, 0.95), rgba(5, 5, 15, 0.98));
   text-align: center;
   padding: 5rem 0;
   position: relative;
@@ -612,60 +612,28 @@ section::before {
   z-index: 1;
   
   .btn-accent {
-    background-color: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(45deg, #4a6bff, #5c3dff);
     color: white;
     padding: 0.9rem 2.2rem;
     font-size: 1.1rem;
     font-weight: 600;
     border-radius: 4px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: none;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #fff, transparent, #fff, transparent);
-      background-size: 400% 400%;
-      opacity: 0;
-      z-index: -1;
-      transition: all 0.5s ease;
-    }
+    box-shadow: 0 5px 20px rgba(80, 120, 255, 0.4);
     
     &:hover {
-      background-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      
-      &::before {
-        opacity: 0.3;
-        animation: buttonGlow 3s linear infinite;
-      }
+      box-shadow: 0 8px 25px rgba(80, 120, 255, 0.5);
     }
     
     &:active {
       transform: translateY(-1px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(80, 120, 255, 0.4);
     }
-  }
-}
-
-@keyframes buttonGlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
   }
 }
 
