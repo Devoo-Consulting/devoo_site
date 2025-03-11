@@ -7,25 +7,34 @@
       </h1>
     </div>
     
-    <!-- Ultra-simple hamburger button - only show on mobile -->
-    <button class="menu-toggle" (click)="mobileMenuOpen = !mobileMenuOpen">
+    <!-- Hamburger button with active state -->
+    <button class="menu-toggle" [class.active]="mobileMenuOpen" (click)="toggleMobileMenu()">
       <span></span>
       <span></span>
       <span></span>
     </button>
     
-    <!-- Desktop navigation links - use *ngIf instead of [hidden] -->
+    <!-- Desktop navigation links -->
     <div class="desktop-nav" *ngIf="!isMobileView">
       <a class="nav-item" routerLink="/services" routerLinkActive="active-link" #navLink>Services</a>
       <a class="nav-item" routerLink="/portfolio" routerLinkActive="active-link" #navLink>Portfolio</a>
       <a class="nav-item" routerLink="/contact" routerLinkActive="active-link" #navLink>Contact</a>
     </div>
     
-    <!-- Mobile overlay menu - with auto-close on click -->
-    <div class="mobile-menu" *ngIf="mobileMenuOpen && isMobileView">
-      <a class="mobile-nav-item" routerLink="/services" routerLinkActive="active-link" (click)="mobileMenuOpen = false">Services</a>
-      <a class="mobile-nav-item" routerLink="/portfolio" routerLinkActive="active-link" (click)="mobileMenuOpen = false">Portfolio</a>
-      <a class="mobile-nav-item" routerLink="/contact" routerLinkActive="active-link" (click)="mobileMenuOpen = false">Contact</a>
+    <!-- Mobile menu with animation classes -->
+    <div class="mobile-menu" 
+         *ngIf="mobileMenuOpen && isMobileView"
+         [class.slideIn]="mobileMenuOpen"
+         [class.slideOut]="!mobileMenuOpen && menuClosing">
+      <a class="mobile-nav-item" 
+         (click)="closeMenu('/services')" 
+         [class.active]="router.url === '/services'">Services</a>
+      <a class="mobile-nav-item" 
+         (click)="closeMenu('/portfolio')" 
+         [class.active]="router.url === '/portfolio'">Portfolio</a>
+      <a class="mobile-nav-item" 
+         (click)="closeMenu('/contact')" 
+         [class.active]="router.url === '/contact'">Contact</a>
     </div>
     
     <!-- Particle container for animated particles -->
